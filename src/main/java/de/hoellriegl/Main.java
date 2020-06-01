@@ -1,9 +1,8 @@
 package de.hoellriegl;
 
 
-import com.mongodb.client.MongoClient;
 import de.hoellriegl.events.MessageListener;
-import de.hoellriegl.util.ConfigReader;
+import de.hoellriegl.util.Config;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -22,8 +21,11 @@ public class Main extends ListenerAdapter {
 
     public static void main(String[] args) throws LoginException, IOException {
         // TODO check internet connection
+        Config config = new Config();
+
         jdaBuilder = new JDABuilder(AccountType.BOT);
-        String token = ConfigReader.getDiscordToken();
+        String token = config.getDiscordToken();
+        String database = config.getDatabaseConnection();
 
         jdaBuilder.setToken(token);
         setupEvents();
