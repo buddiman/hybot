@@ -29,6 +29,7 @@ public class Main extends ListenerAdapter {
 
         jdaBuilder.setToken(token);
         setupEvents();
+        
         jdaBuilder.build();
     }
 
